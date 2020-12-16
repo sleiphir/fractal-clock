@@ -89,14 +89,19 @@ function drawCurrentTime(x, y, radius, angle_offset, width, color)
  * @param {string} color color of the strokes (hex or name, e.g "red" or "#FF0000")
  */
 function drawFractalTime(x, y, radius, angle_offset, width, color)
-{    
+{
+    // beginPath() and stroke() are called here after every fractal branches has been prepared for optimization purposes
     context.beginPath();
     context.strokeStyle = 'white';
     const root = drawCurrentTime(x, y, radius, angle_offset, width, color);
     context.stroke();
     context.beginPath();
-    _recFractal(root.second_hand, radius * 0.70, 0.5, "#a095ff", 1); // "#f4ff95"
-    _recFractal(root.minute_hand, radius * 0.70, 0.5, "#a095ff", 1); // "#ff9a95"
+    _recFractal(root.second_hand, radius * 0.70, 0.5, "#f4ff95", 1);
+    context.stroke();
+    context.beginPath();
+    _recFractal(root.minute_hand, radius * 0.70, 0.5, "#ff9a95", 1);
+    context.stroke();
+    context.beginPath();
     _recFractal(root.hour_hand, radius * 0.70, 0.5, "#a095ff", 1);
     context.stroke();
 }
