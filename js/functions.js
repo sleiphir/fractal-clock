@@ -115,9 +115,8 @@ function drawFractalTime(x, y, radius, angle_offset, width, color)
  */
 function _recFractal(hand, radius, width, color, iter)
 {
-    //color = "#"+(parseInt(color.substr(1), 16) - iter * 65793).toString(16);
-    // Continue the recursion while the radius is above 3 pixels
-    if (radius >= 7) {
+    // Continue while the radius is above 7 pixels and the call stack depth is below 10
+    if (radius >= 7 && iter < 10) {
         // Draw the new clock with a radius 30% smaller
         const hands = drawCurrentTime(hand.x, hand.y, radius, hand.angle, width, color);
         // Draw second hand clock
