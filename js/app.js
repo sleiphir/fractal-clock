@@ -11,6 +11,9 @@ canvas.height = canvas_size;
 
 document.querySelector(".content").style.height = window.innerHeight;
 
+const clock = document.querySelector("#clock");
+clock.style.width = canvas_size / 2.7;
+
 // Reload on resize
 window.addEventListener("resize", () => { location.reload(); });
 
