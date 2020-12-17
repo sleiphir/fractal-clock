@@ -30,7 +30,7 @@ setInterval(() => {
 function loop()
 {
     context.clearRect(0, 0, canvas_size, canvas_size);
-    drawFractalTime(canvas_size / 2, canvas_size / 2, canvas_size / 7, 0, 1);
+    drawFractalTime(canvas_size / 2, canvas_size / 2, canvas_size / 7, 0, 2);
     window.requestAnimationFrame(loop);
 }
 
