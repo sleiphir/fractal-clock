@@ -9,6 +9,8 @@ const canvas_size = window.innerHeight > window.innerWidth
 canvas.width = canvas_size;
 canvas.height = canvas_size;
 
+document.querySelector(".content").style.height = window.innerHeight;
+
 // Reload on resize
 window.addEventListener("resize", () => { location.reload(); });
 
