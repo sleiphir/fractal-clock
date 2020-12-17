@@ -23,7 +23,7 @@ setInterval(() => {
     dom_time.children[0].textContent = time.h < 10 ? `0${time.h}` : time.h;
     dom_time.children[1].textContent = time.m < 10 ? `0${time.m}` : time.m;
     dom_time.children[2].textContent = time.s < 10 ? `0${time.s}` : time.s;
-    document.title = `${time.h}:${time.m}:${time.s}`
+    document.title = `Fractal Clock - ${time.h < 10 ? `0${time.h}` : time.h}:${time.m < 10 ? `0${time.m}` : time.m}:${time.s < 10 ? `0${time.s}` : time.s}`
 }, 1000);
 
 // Main loop
