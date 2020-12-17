@@ -11,28 +11,3 @@ body {
     height: 100vh;
     width: 100vw;
 }
-
-#clock {
-    z-index: 0;
-    position: absolute;
-}
-
-#time {
-    top: 10px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 5em;
-    position: absolute;
-}
-
-#h {
-    color: #82a8ff;
-}
-
-#m {
-    color: #ff9782;
-}
-
-#s {
-    color: #ffd782;
-}

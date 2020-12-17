@@ -68,12 +68,12 @@ function drawLineAngle(x, y, radius, angle, width, color)
 function drawCurrentTime(x, y, radius, angle_offset, width)
 {
     const time = getTime();
-    // Current hour with decimals (e.g 1h 30m -> 1.5)
-    const hours = time.h + (time.m / 60);
-    // Current hour with decimals (e.g 1m 30s -> 1.5)
-    const minutes = time.m + (time.s / 60);
     // Current seconds with decimals (e.g 1s 553ms -> 1.553)
     const seconds = time.s + (time.ms / 1000);
+    // Current hour with decimals
+    const minutes = time.m + (seconds / 60);
+    // Current hour with decimals
+    const hours = time.h + (minutes / 60);
 
     const second_hand = drawLineAngle(x, y, radius, seconds * Math.PI * 2 / 60 - Math.PI/2 + angle_offset, width, SECOND_COLOR);
     const minute_hand = drawLineAngle(x, y, radius, minutes * Math.PI * 2 / 60 - Math.PI/2 + angle_offset, width, MINUTE_COLOR);
@@ -107,14 +107,14 @@ function drawFractalTime(x, y, radius, angle_offset, width)
 function _recFractal(hand, radius, width, iter = 1)
 {
     // Continue while the radius is above 15 pixels and the call stack depth is below 10
-    if (radius >= 15 && iter < 10) {
+    if (radius >= 16 && iter < 10) {
         // Draw the new clock with a radius 30% smaller
         const hands = drawCurrentTime(hand.x, hand.y, radius, hand.angle, width);
         // Draw second hand clock
-        _recFractal(hands.second_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
+        _recFractal(hands.second_hand, Math.floor(radius * 0.7), width * 0.5, iter + 1);
         // Draw minute hand clock
-        _recFractal(hands.minute_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
+        _recFractal(hands.minute_hand, Math.floor(radius * 0.7), width * 0.5, iter + 1);
         // Draw hour hand clock
-        _recFractal(hands.hour_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
+        _recFractal(hands.hour_hand, Math.floor(radius * 0.7), width * 0.5, iter + 1);
     }
 }
