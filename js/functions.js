@@ -1,6 +1,6 @@
-const HOUR_COLOR = "#a095ff";
-const MINUTE_COLOR = "#ff9a95";
-const SECOND_COLOR = "#f4ff95";
+const HOUR_COLOR = "#82a8ff";
+const MINUTE_COLOR = "#ff9782";
+const SECOND_COLOR = "#ffd782";
 
 /**
  * Return the current local time (HH:MM:SS) in an object { h, m, s, ms}
@@ -111,10 +111,10 @@ function _recFractal(hand, radius, width, iter = 1)
         // Draw the new clock with a radius 30% smaller
         const hands = drawCurrentTime(hand.x, hand.y, radius, hand.angle, width);
         // Draw second hand clock
-        _recFractal(hands.second_hand, radius * 0.70, width * 0.5, iter + 1);
+        _recFractal(hands.second_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
         // Draw minute hand clock
-        _recFractal(hands.minute_hand, radius * 0.70, width * 0.5, iter + 1);
+        _recFractal(hands.minute_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
         // Draw hour hand clock
-        _recFractal(hands.hour_hand, radius * 0.70, width * 0.5, iter + 1);
+        _recFractal(hands.hour_hand, Math.floor(radius * 0.70), width * 0.5, iter + 1);
     }
 }
