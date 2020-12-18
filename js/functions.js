@@ -45,8 +45,8 @@ function drawLine(x1, y1, x2, y2, width, color)
  */
 function drawLineAngle(x, y, radius, angle, width, color)
 {
-    const end_x = x + radius * Math.cos(angle);
-    const end_y = y + radius * Math.sin(angle);
+    const end_x = x + radius * Math.cos(angle - Math.PI/2);
+    const end_y = y + radius * Math.sin(angle - Math.PI/2);
 
     drawLine(x, y, end_x, end_y, width, color);
 
@@ -75,9 +75,9 @@ function drawCurrentTime(x, y, radius, angle_offset, width)
     // Current hour with decimals
     const hours = time.h + (minutes / 60);
 
-    const second_hand = drawLineAngle(x, y, radius, seconds * Math.PI * 2 / 60 - Math.PI/2 + angle_offset, width, SECOND_COLOR);
-    const minute_hand = drawLineAngle(x, y, radius, minutes * Math.PI * 2 / 60 - Math.PI/2 + angle_offset, width, MINUTE_COLOR);
-    const   hour_hand = drawLineAngle(x, y, radius,   hours * Math.PI * 2 / 12 - Math.PI/2 + angle_offset, width, HOUR_COLOR);
+    const second_hand = drawLineAngle(x, y, radius, seconds / 60 * 2 * Math.PI + angle_offset, width, SECOND_COLOR);
+    const minute_hand = drawLineAngle(x, y, radius, minutes / 60 * 2 * Math.PI + angle_offset, width, MINUTE_COLOR);
+    const   hour_hand = drawLineAngle(x, y, radius,   hours / 12 * 2 * Math.PI + angle_offset, width, HOUR_COLOR);
 
     return { second_hand, minute_hand, hour_hand };
 }
